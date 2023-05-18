@@ -6,16 +6,16 @@ public class Users {
     private String prenom;
     private int age;
     private String email;
-    private String motDePasse;
+    private String motdepasse;
 
 
-    public Users(int id, String nom, String prenom, int age, String email, String motDePasse) {
+    public Users(int id, String nom, String prenom, int age, String email, String motdepasse) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
         this.age = age;
         this.email = email;
-        this.motDePasse = motDePasse;
+        this.motdepasse = motdepasse;
     }
 
     public int getAge() {
@@ -61,12 +61,12 @@ public class Users {
         this.email = email;
     }
 
-    public String getMotDePasse() {
-        return motDePasse;
+    public String getMotdepasse() {
+        return motdepasse;
     }
 
     public void setMotDePasse(String motDePasse) {
-        this.motDePasse = motDePasse;
+        this.motdepasse = motDePasse;
     }
 
 
@@ -78,7 +78,7 @@ public class Users {
                 ", prenom='" + prenom + '\'' +
                 ", age=" + age +
                 ", email='" + email + '\'' +
-                ", motDePasse='" + motDePasse + '\'' +
+                ", motDePasse='" + motdepasse + '\'' +
                 '}';
     }
 }

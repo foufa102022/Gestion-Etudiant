@@ -1,3 +1,4 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: foufa
@@ -5,12 +6,22 @@
   Time: 19:34
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
+<%@include file="menu.jsp"%>
+<%@include file="Link.jsp"%>
+<div class = "container">
+    <div class = "row">
+        <div class = "col-6">
+
+
+
+
 <form action="Users" method = "post" name="Usersform">
     <label class ="form-label" for="nom">Nom:</label>
     <input class="form-control" name="nom" id="nom" type="text" placeholder="Donner votre nom" required />
@@ -32,7 +43,7 @@
 
     <button class="btn btn-primary" type="submit" name="save">Add</button>
 </form>
-<table class="table">
+<table class=table>
     <thead>
     <tr>
         <th scope="col">#</th>
@@ -44,17 +55,28 @@
 
     </tr> </thead>
     <tbody>
-    <c:forEach items="${ Users }" var="s">
+
+    <c:forEach items="${ users }" var = "s">
         <tr>
-            <th scope="row"><c:out value="${s.id}"/> </th>
-            <td><c:out value="${s.nom}"/></td>
-            <td><c:out value="${s.prenom}"/></td>
-            <td><c:out value="${s.age}"/></td>
-            <td><c:out value="${s.email}"/></td>
-            <td><c:out value="${s.motDepasse}"/></td>
+            <th scope="row">
+                <c:out value = "${s.id}"/>
+            </th>
+              <td> <c:out value = "${s.id}"/></td>
+                <td><c:out value = "${s.id}"/></td>
+               <td><c:out value = "${s.id}"/></td>
+              <td><c:out value = "${s.id}"/></td>
+
         </tr>
     </c:forEach>
     </tbody>
 </table>
+
+
+<button class="btn btn-primary" type="submit" name="Edit">EDIT</button>
+<button class="btn btn-primary" type="submit" name="Delete">DELETE</button>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

@@ -7,7 +7,7 @@ import java.util.List;
 public class UserDao {
 
 
-    private Connection conn ;
+    private Connection con ;
 
 
 
@@ -17,7 +17,7 @@ public class UserDao {
 //            String url = "jdbc:postgresql://localhost/postgres?userClass.forName(" org.postgresql.Driver")
             String url = "jdbc:postgresql://localhost/postgres?user=postgres&password=0000";
 
-            conn = DriverManager.getConnection(url);
+            con = DriverManager.getConnection(url);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         } catch (SQLException e) {
@@ -25,21 +25,21 @@ public class UserDao {
         }
 
     }
-        public List<Users> listusers()
+        public List<Users> userList()
 
         {
-            List<Users> Users = new ArrayList<Users>();
+            List<Users> users = new ArrayList<Users>();
             ConnectPostGreSql();
 
             Statement st = null ;
             try {
-                st = conn.createStatement();
-                ResultSet rs = st.executeQuery("select *  FROM usertab");
+                st = con.createStatement();
+                ResultSet rs = st.executeQuery("select *  FROM utilisateur");
                 while (rs.next()) {
-                    Users.add(new Users(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom") , rs.getInt("age"),  rs.getString("email"), rs.getString("motDePasse")));
+                    users.add(new Users(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom") , rs.getInt("age"),  rs.getString("email"), rs.getString("motDePasse")));
                 }
 
-                return Users;
+                return users;
             }
             catch  (SQLException e)
             {
@@ -47,16 +47,16 @@ public class UserDao {
             }
         }
 
-    public void addStudent(Users s) {
+    public void addusers(Users s) {
         try {
             ConnectPostGreSql();
             PreparedStatement preparedStatement =
-                    conn.prepareStatement("INSERT INTO usertab(nom, prenom , age , email , motDepasse) VALUES(?, ?, ? ,? , ? );");
+                    con.prepareStatement("INSERT INTO utilisateur(nom, prenom , age , email , motdepasse) VALUES(?, ?, ? ,? , ? );");
             preparedStatement.setString(1, s.getNom());
             preparedStatement.setString(2, s.getPrenom());
             preparedStatement.setInt(3, s.getAge());
             preparedStatement.setString(4, s.getEmail());
-            preparedStatement.setString(5, s.getMotDePasse());
+            preparedStatement.setString(5, s.getMotdepasse());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException();
