@@ -22,7 +22,7 @@
 
 
 
-<form action="Users" method = "post" name="Usersform">
+<form action="hello-servlet" method = "post" name="Usersform">
     <label class ="form-label" for="nom">Nom:</label>
     <input class="form-control" name="nom" id="nom" type="text" placeholder="Donner votre nom" required />
 
@@ -52,28 +52,35 @@
         <th scope="col">Age</th>
         <th scope="col">Email</th>
         <th scope="col">Mot de passe</th>
+        <th scope="col">Action</th>
+
 
     </tr> </thead>
     <tbody>
 
     <c:forEach items="${ users }" var = "s">
         <tr>
-            <th scope="row">
-                <c:out value = "${s.id}"/>
-            </th>
+<%--            <th scope="row">--%>
+<%--                <c:out value = "${s.id}"/>--%>
+<%--            </th>--%>
               <td> <c:out value = "${s.id}"/></td>
-                <td><c:out value = "${s.id}"/></td>
-               <td><c:out value = "${s.id}"/></td>
-              <td><c:out value = "${s.id}"/></td>
-
+                <td><c:out value = "${s.nom}"/></td>
+               <td><c:out value = "${s.prenom}"/></td>
+              <td><c:out value = "${s.age}"/></td>
+            <td><c:out value = "${s.email}"/></td>
+            <td><c:out value = "${s.motdepasse}"/></td>
+            <td><button class="btn btn-primary" type="submit" name="Edit">EDIT</button> <button class="btn btn-primary" type="submit" name="Delete">DELETE</button></td>
         </tr>
     </c:forEach>
     </tbody>
 </table>
+<%--<c:forEach items="${ users }" var = "s">--%>
+<%--            <div class="vstack gap-3">--%>
+<%--                <div class="p-2">l'etidiant nomé ${s.nom} </div>--%>
+<%--                --%>
+<%--            </div>--%>
 
-
-<button class="btn btn-primary" type="submit" name="Edit">EDIT</button>
-<button class="btn btn-primary" type="submit" name="Delete">DELETE</button>
+<%--</c:forEach>--%>
         </div>
     </div>
 </div>
